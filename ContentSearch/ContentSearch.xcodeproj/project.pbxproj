@@ -18,6 +18,8 @@
 		2B8BBD682C8F274F008139DF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD672C8F274F008139DF /* NetworkService.swift */; };
 		2B8BBD6B2C8F4364008139DF /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD6A2C8F4364008139DF /* NetworkDataFetcher.swift */; };
 		2B8BBD6D2C8F43B2008139DF /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD6C2C8F43B2008139DF /* SearchResults.swift */; };
+		2B8BBDCD2C90ACCC008139DF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBDCC2C90ACCC008139DF /* SearchViewController.swift */; };
+		2B8BBDCF2C90B4F2008139DF /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBDCE2C90B4F2008139DF /* ContentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		2B8BBD672C8F274F008139DF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2B8BBD6A2C8F4364008139DF /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		2B8BBD6C2C8F43B2008139DF /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		2B8BBDCC2C90ACCC008139DF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2B8BBDCE2C90B4F2008139DF /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				2B8BBD242C8DDD77008139DF /* SceneDelegate.swift */,
 				2B8BBD692C8F327C008139DF /* Service */,
 				2B8BBD262C8DDD77008139DF /* ViewController.swift */,
+				2B8BBDCC2C90ACCC008139DF /* SearchViewController.swift */,
+				2B8BBDCE2C90B4F2008139DF /* ContentCell.swift */,
 				2B8BBD2B2C8DDD79008139DF /* Assets.xcassets */,
 				2B8BBD2D2C8DDD79008139DF /* LaunchScreen.storyboard */,
 				2B8BBD302C8DDD79008139DF /* Info.plist */,
@@ -280,11 +286,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8BBD272C8DDD77008139DF /* ViewController.swift in Sources */,
+				2B8BBDCD2C90ACCC008139DF /* SearchViewController.swift in Sources */,
 				2B8BBD232C8DDD77008139DF /* AppDelegate.swift in Sources */,
 				2B8BBD682C8F274F008139DF /* NetworkService.swift in Sources */,
 				2B8BBD252C8DDD77008139DF /* SceneDelegate.swift in Sources */,
 				2B8BBD6D2C8F43B2008139DF /* SearchResults.swift in Sources */,
 				2B8BBD6B2C8F4364008139DF /* NetworkDataFetcher.swift in Sources */,
+				2B8BBDCF2C90B4F2008139DF /* ContentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
