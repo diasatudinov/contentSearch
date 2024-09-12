@@ -1,14 +1,14 @@
 //
-//  SearchViewController.swift
+//  ViewContrViewController.swift
 //  ContentSearch
 //
-//  Created by Dias Atudinov on 10.09.2024.
+//  Created by Dias Atudinov on 11.09.2024.
 //
 
 import UIKit
 
-class SearchViewController: UICollectionViewController {
-    
+class ViewContrViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+
     var dataProvider = DataProvider()
     var networkDataFetcher = NetworkDataFetcher()
     private var timer: Timer?
@@ -16,6 +16,7 @@ class SearchViewController: UICollectionViewController {
     private var searchHistory = [String]() // Массив для хранения истории запросов
     private var filteredHistory = [String]() // Отфильтрованная история для подсказок
     private var suggestionsTableView = UITableView()
+    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var searchController = UISearchController(searchResultsController: nil)
     
     private let itemPerRow: CGFloat = 2
@@ -23,7 +24,7 @@ class SearchViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .mainBg
+        view.backgroundColor = .mainBg
         
         setupCollectionView()
         setupNavigationBar()
@@ -37,25 +38,39 @@ class SearchViewController: UICollectionViewController {
         suggestionsTableView.isHidden = true // Изначально скрываем таблицу
         suggestionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "SuggestionCell")
         
-        collectionView.addSubview(suggestionsTableView)
+        view.addSubview(suggestionsTableView)
         
         // Настройка Auto Layout
         suggestionsTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             suggestionsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            suggestionsTableView.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
-            suggestionsTableView.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
+            suggestionsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            suggestionsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             suggestionsTableView.heightAnchor.constraint(equalToConstant: 200)// Ограничиваем высоту таблицы
         ])
     }
     
     
     private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CellId")
         collectionView.register(ContentCell.self, forCellWithReuseIdentifier: ContentCell.reuseId)
-        
+        view.addSubview(collectionView)
         collectionView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.contentInsetAdjustmentBehavior = .automatic
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.backgroundColor = .mainBg
+        
+        NSLayoutConstraint.activate([
+            
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+
     }
     
     private func setupNavigationBar() {
@@ -82,11 +97,11 @@ class SearchViewController: UICollectionViewController {
     
     // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return contents.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCell.reuseId, for: indexPath) as! ContentCell
         let unsplashContent = contents[indexPath.item]
         cell.unsplashPhoto = unsplashContent
@@ -123,7 +138,7 @@ class SearchViewController: UICollectionViewController {
 
 // MARK: - UISearchBarDelegate
 
-extension SearchViewController: UISearchBarDelegate {
+extension ViewContrViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
         filterHistory(for: searchText)
@@ -132,8 +147,12 @@ extension SearchViewController: UISearchBarDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
             self.networkDataFetcher.fetchImages(searchTearm: searchText) { [weak self] searchResults in
                 guard let fetchedContent = searchResults else { return }
+                print(searchText)
                 self?.contents = fetchedContent.results
                 self?.collectionView.reloadData()
+                if searchText.isEmpty {
+                    self?.suggestionsTableView.isHidden = true
+                }
             }
         })
     }
@@ -147,7 +166,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension SearchViewController: UICollectionViewDelegateFlowLayout {
+extension ViewContrViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -169,7 +188,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
+extension ViewContrViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredHistory.count
@@ -178,13 +197,17 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestionCell", for: indexPath)
         cell.textLabel?.text = filteredHistory[indexPath.row]
-        cell.backgroundColor = .blue
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedSuggestion = filteredHistory[indexPath.row]
         searchController.searchBar.text = selectedSuggestion
+        self.networkDataFetcher.fetchImages(searchTearm: selectedSuggestion) { [weak self] searchResults in
+            guard let fetchedContent = searchResults else { return }
+            self?.contents = fetchedContent.results
+            self?.collectionView.reloadData()
+        }
         searchBarSearchButtonClicked(searchController.searchBar)
         suggestionsTableView.isHidden = true
     }
