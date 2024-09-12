@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2B8BBD232C8DDD77008139DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD222C8DDD77008139DF /* AppDelegate.swift */; };
 		2B8BBD252C8DDD77008139DF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD242C8DDD77008139DF /* SceneDelegate.swift */; };
-		2B8BBD272C8DDD77008139DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD262C8DDD77008139DF /* ViewController.swift */; };
 		2B8BBD2C2C8DDD79008139DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BBD2B2C8DDD79008139DF /* Assets.xcassets */; };
 		2B8BBD2F2C8DDD79008139DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BBD2D2C8DDD79008139DF /* LaunchScreen.storyboard */; };
 		2B8BBD3A2C8DDD79008139DF /* ContentSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD392C8DDD79008139DF /* ContentSearchTests.swift */; };
@@ -18,9 +17,9 @@
 		2B8BBD682C8F274F008139DF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD672C8F274F008139DF /* NetworkService.swift */; };
 		2B8BBD6B2C8F4364008139DF /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD6A2C8F4364008139DF /* NetworkDataFetcher.swift */; };
 		2B8BBD6D2C8F43B2008139DF /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBD6C2C8F43B2008139DF /* SearchResults.swift */; };
-		2B8BBDCD2C90ACCC008139DF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBDCC2C90ACCC008139DF /* SearchViewController.swift */; };
 		2B8BBDCF2C90B4F2008139DF /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBDCE2C90B4F2008139DF /* ContentCell.swift */; };
-		2B8BBDF72C92024F008139DF /* ViewContrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBDF62C92024F008139DF /* ViewContrViewController.swift */; };
+		2B8BBDF72C92024F008139DF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBDF62C92024F008139DF /* SearchViewController.swift */; };
+		2B8BBDF92C92E9A5008139DF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8BBDF82C92E9A5008139DF /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 		2B8BBD1F2C8DDD77008139DF /* ContentSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContentSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8BBD222C8DDD77008139DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B8BBD242C8DDD77008139DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2B8BBD262C8DDD77008139DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2B8BBD2B2C8DDD79008139DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B8BBD2E2C8DDD79008139DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B8BBD302C8DDD79008139DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,9 +54,9 @@
 		2B8BBD672C8F274F008139DF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2B8BBD6A2C8F4364008139DF /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		2B8BBD6C2C8F43B2008139DF /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
-		2B8BBDCC2C90ACCC008139DF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2B8BBDCE2C90B4F2008139DF /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
-		2B8BBDF62C92024F008139DF /* ViewContrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContrViewController.swift; sourceTree = "<group>"; };
+		2B8BBDF62C92024F008139DF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2B8BBDF82C92E9A5008139DF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +110,8 @@
 				2B8BBD222C8DDD77008139DF /* AppDelegate.swift */,
 				2B8BBD242C8DDD77008139DF /* SceneDelegate.swift */,
 				2B8BBD692C8F327C008139DF /* Service */,
-				2B8BBD262C8DDD77008139DF /* ViewController.swift */,
-				2B8BBDF62C92024F008139DF /* ViewContrViewController.swift */,
-				2B8BBDCC2C90ACCC008139DF /* SearchViewController.swift */,
+				2B8BBDF62C92024F008139DF /* SearchViewController.swift */,
+				2B8BBDF82C92E9A5008139DF /* DetailViewController.swift */,
 				2B8BBDCE2C90B4F2008139DF /* ContentCell.swift */,
 				2B8BBD2B2C8DDD79008139DF /* Assets.xcassets */,
 				2B8BBD2D2C8DDD79008139DF /* LaunchScreen.storyboard */,
@@ -288,13 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B8BBD272C8DDD77008139DF /* ViewController.swift in Sources */,
-				2B8BBDCD2C90ACCC008139DF /* SearchViewController.swift in Sources */,
 				2B8BBD232C8DDD77008139DF /* AppDelegate.swift in Sources */,
 				2B8BBD682C8F274F008139DF /* NetworkService.swift in Sources */,
 				2B8BBD252C8DDD77008139DF /* SceneDelegate.swift in Sources */,
-				2B8BBDF72C92024F008139DF /* ViewContrViewController.swift in Sources */,
+				2B8BBDF72C92024F008139DF /* SearchViewController.swift in Sources */,
 				2B8BBD6D2C8F43B2008139DF /* SearchResults.swift in Sources */,
+				2B8BBDF92C92E9A5008139DF /* DetailViewController.swift in Sources */,
 				2B8BBD6B2C8F4364008139DF /* NetworkDataFetcher.swift in Sources */,
 				2B8BBDCF2C90B4F2008139DF /* ContentCell.swift in Sources */,
 			);
